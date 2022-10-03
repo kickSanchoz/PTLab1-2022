@@ -2,9 +2,8 @@
 import argparse
 import sys
 
-from CalcRating import CalcRating
-from TextDataReader import TextDataReader
 from XmlReader import XmlReader
+from CalcExcellentStudent import CalcExcellentStudent
 
 
 def get_path_from_arguments(args) -> str:
@@ -22,6 +21,12 @@ def main():
     reader = XmlReader()
     data = reader.read(path)
     print(data)
+
+    excellentStudent = CalcExcellentStudent(data).find()
+    if len(excellentStudent) != 0:
+        print("Стобалльники: ", excellentStudent)
+    else:
+        print("Нет студента, имеющего 100 баллов по всем дисциплинам")
 
 
 if __name__ == "__main__":
