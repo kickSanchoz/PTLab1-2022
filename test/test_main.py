@@ -2,6 +2,7 @@
 from src.main import get_path_from_arguments
 import pytest
 
+
 # Тесты запускаются для всех функций, имя которых начинается с "test_"
 
 
@@ -15,12 +16,14 @@ def noncorrect_arguments_string() -> list[str]:
     return ["/home/user/file.txt"]
 
 
-def test_get_path_from_correct_arguments(correct_arguments_string: tuple[list[str], str]) -> None:
+def test_get_path_from_correct_arguments(
+        correct_arguments_string: tuple[list[str], str]) -> None:
     path = get_path_from_arguments(correct_arguments_string[0])
     assert path == correct_arguments_string[1]
 
 
-def test_get_path_from_noncorrect_arguments(noncorrect_arguments_string: list[str]) -> None:
+def test_get_path_from_noncorrect_arguments(
+        noncorrect_arguments_string: list[str]) -> None:
     with pytest.raises(SystemExit) as e:
         get_path_from_arguments(noncorrect_arguments_string[0])
     assert e.type == SystemExit
