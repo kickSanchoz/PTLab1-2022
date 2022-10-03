@@ -14,6 +14,7 @@ def get_path_from_arguments(args) -> str:
     return args.path
 
 
+# -p "../data/data.txt"
 def main():
     path = get_path_from_arguments(sys.argv[1:])
 
